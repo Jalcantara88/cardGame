@@ -3,7 +3,7 @@ import Cards from './components/cards';
 import io from 'socket.io-client';
 
 var newSocket;
-
+/*
 //set up client side socket handshake
 function connectSocket() {
   // point to server
@@ -24,6 +24,7 @@ function onPlayerCount(count, users) {
 }
 
 //connectSocket();
+*/
 
 function App() {
   return (
