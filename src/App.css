@@ -1,10 +1,16 @@
 .gameArea {
   text-align: center;
-  background-color: #3a414e;
+  background: linear-gradient(#3a414e, #222833);
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #444cf755, #444cf7 );
+  padding: 50px 0;
+  min-height: 700px;
 }
 
 .html {
   background-color: #61dafb;
+  height: 100%;
 }
 
 .card {
@@ -27,6 +33,8 @@
   min-width: 50px;
   background-image: linear-gradient(to bottom, white, rgb(190, 188, 183));
 }
+
+
 
 .cardImg {
   width: 50%;
@@ -52,9 +60,12 @@
   margin: 10px;
 
   background-color: transparent;
-  width: 200px;
-  height: 300px;
+  width: 100px;
+  height: 150px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
+
+  
 }
 
 /* This container is needed to position the front and back side */
@@ -75,9 +86,7 @@
 */
 
 .flipped {
-  transform: rotateY(180deg);
-  border: 3px solid cyan;
-  border-radius: 10px;
+  transform: rotateY(-179deg);
 }
 
 /* Position the front and back side */
@@ -94,8 +103,12 @@
   background-image: linear-gradient(to bottom, white, rgb(190, 188, 183));
   color: black;
   border-radius: 10px;
-  opacity: 1;
+  opacity: 0.8;
   background: linear-gradient(135deg, #f7444455 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #f74444 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #f7444455 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #f74444 25%, #e5e5f7 25%) 0px 0/ 20px 20px;
+  box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
 }
 
 .flip-card-front-inner {
@@ -104,15 +117,130 @@
   height: 100%;
   background-color: #e5e5f7;
 opacity: 1;
-transform: rotateY(180deg);
+
 background: linear-gradient(135deg, #f7444455 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #f74444 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #f7444455 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #f74444 25%, #e5e5f7 25%) 0px 0/ 20px 20px;
+
 }
 
 /* Style the back side */
 .flip-card-back {
   background-image: linear-gradient(to bottom, white, rgb(190, 188, 183));
 
-  transform: rotateY(180deg);
+  transform: rotateY(181deg);
   border-radius: 10px;
+  box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
 
 } 
+
+.gone {
+  opacity: 0;
+}
+
+.noClick {
+  pointer-events: none;
+}
+
+.app{
+  background: linear-gradient(rgb(255, 255, 255)(236, 226, 226), rgb(140, 140, 177));
+  height: 100%;
+}
+
+footer {
+  background: linear-gradient(#222833,#3a414e);
+  color: #f74444;
+  width: 100%;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.gameTitle {
+  font-size: 3em;
+  color: white;
+  text-shadow: 4px 4px 3px black;
+  background-color: #f74444;
+  border-radius: 20px;
+  width: 9em;
+  padding: 0 0 10px 0;
+  margin: 0 auto 20px auto;
+}
+
+.aboutArea {
+  padding: 0;
+  text-align: left;
+  width: 70%;
+  margin: 50px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 4px 4px 3px grey;
+  background-color: #3a414e;
+  color: white;
+}
+
+.aboutDetails {
+  padding: 20px;
+}
+
+.aboutHeader {
+  background-color: #f74444;
+  font-weight: bold;
+  padding: 10px 0 10px 20px;
+}
+
+.socialLink {
+  width: 100px;
+  height: 100px;
+  color: white;
+
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.socialLinks li {
+  list-style-type: none; 
+}
+
+.instruct {
+  width: 50%;
+  margin: 100px auto;
+  background-image: linear-gradient(to bottom, white, rgb(190, 188, 183));
+  border-radius: 20px;
+  padding: 20px 40px;
+  font-weight: bold;
+  box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+}
+
+.instructTitle {
+  color:#f74444;
+}
+
+.menuTitle {
+  color: rgb(26, 31, 44);
+  font-size: 1.5em;
+}
+
+.menuButton {
+  background-color: aliceblue;
+  color: #f74444;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 120px;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 20px;
+
+  box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+}
