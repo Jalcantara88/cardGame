@@ -54,11 +54,11 @@ function App() {
         <footer>
           <h3>find me here:</h3>
           <ul className="socialLinks">
-          <li><a href="https://github.com/Jalcantara88"><i class="socialLink fab fa-github fa-2x"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/deadheadstudio/"><i class="socialLink fab fa-linkedin fa-2x"></i></a></li>
-                            <li><a href="https://jalcantara.netlify.app/"><i class="socialLink fas fa-folder fa-2x"></i></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCzLJQTYgUrhEFAOxt2ek0lg?"><i class="socialLink fab fa-youtube fa-2x"></i></a></li>
-                            <li><a href="https://www.behance.net/DeadHead"><i class="socialLink fab fa-behance-square fa-2x"></i></a></li>
+          <li><a href="https://github.com/Jalcantara88"><i className="socialLink fab fa-github fa-2x"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/deadheadstudio/"><i className="socialLink fab fa-linkedin fa-2x"></i></a></li>
+                            <li><a href="https://jalcantara.netlify.app/"><i className="socialLink fas fa-folder fa-2x"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCzLJQTYgUrhEFAOxt2ek0lg?"><i className="socialLink fab fa-youtube fa-2x"></i></a></li>
+                            <li><a href="https://www.behance.net/DeadHead"><i className="socialLink fab fa-behance-square fa-2x"></i></a></li>
           </ul>
         </footer>
       </div>

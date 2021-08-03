@@ -7,6 +7,7 @@ var gameOver = false;
 
 function showCards(nodeList) { 
     nodeList.forEach(card => {
+        console.log(card);
         card.classList.toggle("flipped");
         setTimeout(() => {
             card.classList.toggle("flipped");
@@ -100,6 +101,7 @@ const RenderCard = ({card, canSelect, setSelected, selected, setNodeSelected, id
 }
 
 const makeCards = (setDeck, setDeckBuilt) => {
+    setDeck([]);
     for(let i = 0; i < suitCount; i++) {
         var suit;
         var color;
@@ -161,12 +163,13 @@ const makeCards = (setDeck, setDeckBuilt) => {
     }
     setDeckBuilt(true);
     cardCount = suitCount * 13;
+    
 }
 
-function checkWin() {
+function checkWin(setGameOver) {
     if(cardCount === 2) {
         console.log("you win");
-        gameOver = true;
+        setGameOver(true);
     }
     else {
         console.log("keep playing");
@@ -176,22 +179,43 @@ const Cards = () => {
     const [deck, setDeck] = useState([]);
     const [deckBuilt, setDeckBuilt] = useState(false);
     const [selected, setSelected] = useState([]);
-    const [canSelect, setCanSelect] = useState(false);
+    const [canSelect, setCanSelect] = useState(true);
     const [nodeSelected, setNodeSelected] = useState([]);
     const [nodeDeck, setNodeDeck] = useState([]);
     const [gameStarted, setGameStarted] = useState(false);
+    const [gameOver, setGameOver] = useState(false);
+    const [isShuffled, setIsShuffled] = useState(false);
 
+    
 
     useEffect(() => {
         console.log(selected);
         if(selected.length === 2) {
             checkPair(selected, setSelected, nodeSelected, setNodeSelected);
-            checkWin();
+            checkWin(setGameOver);
         }
     },[selected]);
+    
+    useEffect(() => {
+        const allCards = document.querySelectorAll(".flip-card-inner");
+        setNodeDeck(allCards);
+        console.log(allCards);
+        if(!isShuffled && gameStarted) {
+            console.log(deck);
+            const newDeck = deck;
+            shuffleDeck(newDeck);
+            setDeck([...newDeck]);
+            const valid = true;
+            setIsShuffled(valid);
+            console.log(deck);
+        }
+        showCards(nodeDeck);
+    }, [gameStarted]);
+    
 
     if(!deckBuilt) {
-        makeCards(setDeck, setDeckBuilt);
+        makeCards(setDeck, setDeckBuilt, deck);
+        
     }
     
 
@@ -239,28 +263,53 @@ const Cards = () => {
     }
 
     else {
-        return(
-            <div className="cardArea">
-                <button onClick={() => {
-                    console.log("shuffled");
-                    const newDeck = deck;
-                    shuffleDeck(newDeck);
-                    setDeck([...newDeck]);
-                    console.log(deck);
-                }}>shuffle</button>
-                <button onClick={() => {
-                    console.log("toggled Move");
-                    console.log(canSelect);
-                    setCanSelect(!canSelect);
-                }}>toggleMove</button>
-                <button onClick={() => {
-                    showCards(nodeDeck);
-                }}>showCards</button>
-                <div className="cardHolder">
-                    {renderedCards}
+        if(gameOver) {
+            return(
+                <>
+                    <article className="gameOver">
+                        <header className="gameOverTitle">Congrats!</header>
+                        <span className="gameOverDetails">
+                            <p>I hope you enjoyed yourself</p>
+                            <button className="menuButton"
+                                onClick={() => {
+                                    makeCards(setDeck, setDeckBuilt);
+                                    setGameOver(false);
+                                }}>replay</button>
+                            <button className="menuButton"
+                                onClick={() => {
+                                    makeCards(setDeck, setDeckBuilt);
+                                    setGameOver(false);
+                                    setGameStarted(false)
+                                }}>menu</button>
+                        </span>
+                    </article>
+                </>
+            )
+        }
+        else {
+            return(
+                <div className="cardArea">
+                    <button onClick={() => {
+                        console.log("shuffled");
+                        const newDeck = deck;
+                        shuffleDeck(newDeck);
+                        setDeck([...newDeck]);
+                        console.log(deck);
+                    }}>shuffle</button>
+                    <button onClick={() => {
+                        console.log("toggled Move");
+                        console.log(canSelect);
+                        setCanSelect(!canSelect);
+                    }}>toggleMove</button>
+                    <button onClick={() => {
+                        showCards(nodeDeck);
+                    }}>showCards</button>
+                    <div className="cardHolder">
+                        {renderedCards}
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }
 
