@@ -23,7 +23,7 @@ function onPlayerCount(count, users) {
   console.log(users);
 }
 
-connectSocket();
+//connectSocket();
 
 function App() {
   return (

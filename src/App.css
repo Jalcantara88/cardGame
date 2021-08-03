@@ -11,12 +11,12 @@
   border-radius: 10px;
   border: 1px solid grey;
 
-  box-shadow: 5px -5px 3px  rgba(0,0,0,0.6);
-  -moz-box-shadow: 5px -5px 3px  rgba(0,0,0,0.6);
-  -webkit-box-shadow: 5px -5px 3px  rgba(0,0,0,0.6);
-  -o-box-shadow: 5px -5px 3px  rgba(0,0,0,0.6);
+  box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: 5px 5px 3px  rgba(0,0,0,0.6);
 
-  padding: 10px 10px 20px 10px;
+  padding: 30px 10px 20px 10px;
 
   flex: 1 0 10%;
   /*flex-grow: 1;*/
@@ -42,7 +42,7 @@
 }
 
 .cardArea {
-  width: 80%;
+  width: 100%;
   margin: 50px auto;
 }
 
@@ -68,9 +68,16 @@
 
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
+/* Do an horizontal flip when you move the mouse over the flip box container 
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
+}
+*/
+
+.flipped {
+  transform: rotateY(180deg);
+  border: 3px solid cyan;
+  border-radius: 10px;
 }
 
 /* Position the front and back side */
@@ -97,6 +104,7 @@
   height: 100%;
   background-color: #e5e5f7;
 opacity: 1;
+transform: rotateY(180deg);
 background: linear-gradient(135deg, #f7444455 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #f74444 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #f7444455 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #f74444 25%, #e5e5f7 25%) 0px 0/ 20px 20px;
 }
 

@@ -1,12 +1,25 @@
 import React, {useState} from 'react';
 import shuffleDeck from './shuffle';
 
-const RenderCard = ({card}) => {
+var suitCount = 2;
+var cardIndex = 0;
+
+function handleClick(canSelect,event) {
+    if(canSelect) {
+        const flipCardInner = event.target.parentNode;
+        flipCardInner.classList.toggle("flipped");
+        console.log(event.target.ownerDocument);
+    }
+}
+
+const RenderCard = ({card, canSelect}) => {
     console.log("rendering card");
     return(
         <>
             <div className="flip-card">
-            <div className="flip-card-inner">
+            <div className="flip-card-inner" onClick={(e) => {
+                handleClick(canSelect, e);
+                }}>
                 <div className="flip-card-front">
                     
                 </div>
@@ -21,16 +34,8 @@ const RenderCard = ({card}) => {
     )
 }
 
-/*
-        <div className="card justify-content-center" style={{}}>
-            <h1 className="cardFace" style={{color: card.color}}>{card.face}</h1>
-            <img className="cardImg" style={{fillColor: card.color}} src={card.suitUrl} alt={card.suit}/>
-        </div>
-        */
-
 const makeCards = (setDeck, setDeckBuilt) => {
-    var cardIndex = 0;
-    for(let i = 0; i < 4; i++) {
+    for(let i = 0; i < suitCount; i++) {
         var suit;
         var color;
         var suitUrl = "";
@@ -83,14 +88,10 @@ const makeCards = (setDeck, setDeckBuilt) => {
                 color: color,
                 suitUrl: suitUrl
             };
-            //console.log(deck);
             setDeck(deck => [
                 ...deck,
                 newCard
             ]);
-            //console.log(deck);
-            //console.log(cardIndex);
-            //console.log(newCard);
             cardIndex++;
         }
     }
@@ -100,6 +101,8 @@ const makeCards = (setDeck, setDeckBuilt) => {
 const Cards = () => {
     const [deck, setDeck] = useState([]);
     const [deckBuilt, setDeckBuilt] = useState(false);
+    //const [selected, setSelected] = useState([]);
+    const [canSelect, setCanSelect] = useState(false);
 
     if(!deckBuilt) {
         makeCards(setDeck, setDeckBuilt);
@@ -108,26 +111,31 @@ const Cards = () => {
     
 
     const renderedCards = deck.map((card, i) => {
+        console.log("rendering card " + i);
         return(
             <RenderCard
                 key={i}
                 card={card}
-                
+                canSelect={canSelect}
+                 
             />
         );
-        
     })
 
     return(
         <div className="cardArea">
             <button onClick={() => {
-                console.log("clicked button");
-                console.log(deck);
+                console.log("shuffled");
                 const newDeck = deck;
                 shuffleDeck(newDeck);
-                setDeck(newDeck);
+                setDeck([...newDeck]);
                 console.log(deck);
             }}>shuffle</button>
+            <button onClick={() => {
+                console.log("toggled Move");
+                console.log(canSelect);
+                setCanSelect(!canSelect);
+            }}>toggleMove</button>
             <div className="cardHolder">
                 {renderedCards}
             </div>
